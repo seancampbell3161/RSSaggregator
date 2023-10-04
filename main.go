@@ -19,8 +19,10 @@ func main() {
 	r.Use()
 	apiRouter := chi.NewRouter()
 	r.Mount("/v1", apiRouter)
-
 	corsMux := middlewareCors(r)
+
+	apiRouter.Get("/readiness", readinessHandler)
+	apiRouter.Get("/err", errorHandler)
 
 	server := &http.Server{
 		Handler: corsMux,
