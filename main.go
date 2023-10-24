@@ -38,6 +38,7 @@ func main() {
 	apiRouter.Get("/err", errorHandler)
 
 	apiRouter.Post("/users", config.createUserHandler)
+	apiRouter.Get("/users", config.getUserHandler)
 
 	server := &http.Server{
 		Handler: corsMux,
